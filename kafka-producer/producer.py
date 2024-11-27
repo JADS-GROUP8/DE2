@@ -36,7 +36,7 @@ def produce_from_file(producer, file):
 
 def run_job():
     producer = KafkaProducer(
-        bootstrap_servers="35.223.205.191:9092"
+        bootstrap_servers="34.133.152.153:9092"
     )  # use your VM's external IP Here!
     # Change the path to your laptop!
     # if you want to learn about threading in python, check the following article
@@ -46,15 +46,15 @@ def run_job():
         target=produce_from_file,
         args=(producer, r"C:\Checkouts\.JADS\DE2\data\fact_table_part_1.json"),
     )
-    # t2 = threading.Thread(
-    #     target=produce_from_file,
-    #     args=(producer, r"C:\Checkouts\.JADS\DE2\data\fact_table_part_2.json"),
-    # )
+    t2 = threading.Thread(
+        target=produce_from_file,
+        args=(producer, r"C:\Checkouts\.JADS\DE2\data\fact_table_part_2.json"),
+    )
     t1.start()
-    # t2.start()
+    t2.start()
 
     t1.join()
-    # t2.join()
+    t2.join()
 
 
 if __name__ == "__main__":
