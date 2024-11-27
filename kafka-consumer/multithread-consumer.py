@@ -32,12 +32,15 @@ def read_from_topic_with_partition_offset(kafka_consumer, topic):
 # if you want to learn about threading in python, check the following article
 # https://realpython.com/intro-to-python-threading/
 
+
 def configure_logger():
     root = logging.getLogger()
     root.setLevel(logging.INFO)
     handler = logging.StreamHandler(sys.stdout)
     handler.setLevel(logging.INFO)
-    formatter = logging.Formatter('%(asctime)s - %(name)s - %(levelname)s - %(message)s')
+    formatter = logging.Formatter(
+        "%(asctime)s - %(name)s - %(levelname)s - %(message)s"
+    )
     handler.setFormatter(formatter)
     root.addHandler(handler)
 
@@ -46,9 +49,11 @@ class KafkaMessageConsumer(Thread):
 
     def __init__(self, topic):
         Thread.__init__(self)
-        self.consumer = KafkaConsumer(bootstrap_servers='VMIP:9092',  # use your VM's external IP Here!
-                                      auto_offset_reset='earliest',
-                                      consumer_timeout_ms=10000)
+        self.consumer = KafkaConsumer(
+            bootstrap_servers="VMIP:9092",  # use your VM's external IP Here!
+            auto_offset_reset="earliest",
+            consumer_timeout_ms=10000,
+        )
 
         self.consumer.subscribe(topics=[topic])
 
@@ -62,8 +67,8 @@ class KafkaMessageConsumer(Thread):
                 time.sleep(30)
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     configure_logger()
-    c1 = KafkaMessageConsumer('avg_score')
+    c1 = KafkaMessageConsumer("avg_score")
     c1.start()
     c1.join()
