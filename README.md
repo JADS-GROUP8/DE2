@@ -16,7 +16,7 @@ install_docker.sh         # Script to install Docker and Docker Compose in the V
 kafka-consumer/
     consumer.py
     multithread-consumer.py
-kafka-producer/            producer scripts
+kafka-producer/
     kafkaadmin.py
     producer.py
     requirements.txt
