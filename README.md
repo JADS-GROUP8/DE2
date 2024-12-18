@@ -1,6 +1,6 @@
-# Kafka Streaming Project
+# Data Engineering Assignment 2
 
-This project demonstrates a Kafka streaming setup with both producer and consumer implementations. The project includes Docker configurations for setting up Kafka and Zookeeper, Python scripts for producing and consuming messages, and Jupyter notebooks for data preparation.
+This project demonstrates a Spark setup that has streaming and batch capabilities. This contains a Kafka streaming setup with both producer and consumer implementations. The project includes Docker configurations for setting up Kafka and Zookeeper, Python scripts for producing and consuming messages, and Jupyter notebooks for data preparation.
 
 ## Project Structure
 
